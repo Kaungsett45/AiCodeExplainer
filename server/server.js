@@ -2,9 +2,8 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
-import bodyParser from "body-parser";
-import { Configuration, OpenAIApi } from "openai";
-
+import rateLimit from "express-rate-limit";
+import { OpenAI } from "openai";
 const app = express();
 
 //security middleware
@@ -44,7 +43,7 @@ try {
     }
 
 
-    const message =[
+    const messages =[
         {
         role: "user",
         content: `Explain this ${language || ""} code in simple terms:\n\n\`\`${language || "" }\n ${code}\n\`\`` 
@@ -52,8 +51,8 @@ try {
         
     ]
         const response = await client.chat.completions.create({
-            "model": "openai/gpt-oss-120b",
-            message,
+            model: "openai/gpt-oss-120b",
+            messages,
             temperature: 0.2,
             max_tokens: 600,
 
@@ -65,11 +64,15 @@ try {
         if(!explaination) {
             return res.status(500).json({error: "Failed to get explanation from AI" });
         }   
+        res.json({ explaination });
 
 } catch (error) {
         console.error("Error:", error);
         res.status(500).json({ error: "Internal server error" , details: error.message });
-}
+}});
 
+const PORT = process.env.PORT || 5000; 
 
+app.listen(PORT, () =>{
+    console.log(`Server is running on http://localhost:${PORT}`);
 })
