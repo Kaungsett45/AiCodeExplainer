@@ -1,26 +1,20 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "server/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "CodeExplainer/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "CodeExplainer/dist"
-      }
+  "buildCommand": "cd CodeExplainer && npm install && npm run build",
+  "outputDirectory": "CodeExplainer/dist",
+  "functions": {
+    "server/server.js": {
+      "runtime": "nodejs18.x"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "server/server.js"
+      "dest": "/server/server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "CodeExplainer/dist/$1"
+      "dest": "/$1"
     }
   ]
 }
