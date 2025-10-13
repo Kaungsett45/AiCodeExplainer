@@ -1,0 +1,38 @@
+/* Enhanced markdown styles for dark theme */
+.explanation-text pre {
+  background: rgba(15, 23, 42, 0.8);
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.explanation-text code {
+  background: rgba(59, 130, 246, 0.1);
+  color: #93c5fd;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.explanation-text pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.explanation-text strong {
+  color: #f1f5f9;
+  font-weight: 600;
+}
+
+.explanation-text h1,
+.explanation-text h2,
+.explanation-text h3 {
+  color: #93c5fd;
+  margin: 1rem 0 0.5rem 0;
+}

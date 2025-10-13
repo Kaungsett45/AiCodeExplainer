@@ -46,7 +46,7 @@ try {
     const messages =[
         {
         role: "user",
-        content: `Explain this ${language || ""} code in simple terms:\n\n\`\`${language || "" }\n ${code}\n\`\`` 
+        content: `Explain this ${language || ""} code in 2-3 short sentences. Be concise and clear:\n\n\`\`${language || "" }\n ${code}\n\`\`` 
         }
         
     ]
@@ -54,7 +54,7 @@ try {
             model: "openai/gpt-oss-120b",
             messages,
             temperature: 0.2,
-            max_tokens: 600,
+            max_tokens: 200,
 
 
         });
