@@ -1,6 +1,12 @@
 {
-  "dependencies": {
-    "react-markdown": "^10.1.0",
-    "remark-gfm": "^4.0.1"
+  "name": "ai-code-explainer",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd CodeExplainer && npm install && npm run build",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd CodeExplainer && npm run dev\"",
+    "start": "cd server && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
