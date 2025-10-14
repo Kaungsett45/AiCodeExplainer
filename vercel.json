@@ -2,15 +2,10 @@
   "version": 2,
   "buildCommand": "cd CodeExplainer && npm install && npm run build",
   "outputDirectory": "CodeExplainer/dist",
-  "functions": {
-    "server/server.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/server/server.js"
+      "dest": "/api/$1"
     },
     {
       "src": "/(.*)",

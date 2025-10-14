@@ -10,7 +10,7 @@ export async function explain(prevState, formData){
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({code, language})
-        });
+        })
 
             if(!res.ok){
                 return{
