@@ -22,7 +22,7 @@ export default async function handler(req, res) {
   if (!apiKey) return res.status(500).json({ error: "Missing API key" });
 
   try {
-    const response = await fetch("https://api.nebius.ai/v1/generate", {
+    const response = await fetch("https://api.studio.nebius.com/v1/", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${apiKey}`,
