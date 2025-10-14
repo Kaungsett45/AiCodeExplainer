@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: "openai/gpt-oss-120b", 
         prompt: `Explain this ${language || ""} code in simple terms:\n\n${code}`,
-        max_output_tokens: 200
+        max_output_tokens: 800
       })
     });
 
