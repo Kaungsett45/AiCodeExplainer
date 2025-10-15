@@ -29,11 +29,13 @@ export default async function handler(req, res) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        model: "openai/gpt-oss-120b", 
+       model: "gpt-4o-mini",
+
         prompt: `Explain this ${language || ""} code in simple terms:\n\n${code}`,
         max_output_tokens: 800
       })
     });
+
 console.log("🔥 RAW RESPONSE:", JSON.stringify(response, null, 2));
   const data = await response.json();
 
