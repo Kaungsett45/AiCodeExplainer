@@ -35,14 +35,18 @@ export default async function handler(req, res) {
       })
     });
 
-    const data = await response.json();
+  const data = await response.json();
 
-    const explanation = data.output || data.text || "No explanation returned";
+const explanation =
+  data?.choices?.[0]?.message?.content || 
+  data?.output?.[0]?.content ||          
+  data?.text || 
+  "No explanation returned.";
 
-    res.setHeader("Access-Control-Allow-Origin", "*");
+res.setHeader("Access-Control-Allow-Origin", "*");
+res.status(200).json({ explanation });
 
-    res.status(200).json({ explanation });
-    console.log("🧠 Explanation sent:", explanation);
+console.log("🧠 Explanation sent:", explanation);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: error.message });
