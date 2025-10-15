@@ -22,29 +22,27 @@ export default async function handler(req, res) {
   if (!apiKey) return res.status(500).json({ error: "Missing API key" });
 
   try {
-    const response = await fetch("https://api.studio.nebius.com/v1/", {
+    const response = await fetch("https://api.studio.nebius.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${apiKey}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-       model: "gpt-4o-mini",
-
-        prompt: `Explain this ${language || ""} code in simple terms:\n\n${code}`,
-        max_output_tokens: 800
+        model: "openai/gpt-oss-120b",
+        messages: [{
+          role: "user",
+          content: `Explain this ${language || ""} code in 2-3 short sentences. Be concise and clear:\n\n\`\`\`${language || ""}\n${code}\n\`\`\``
+        }],
+        temperature: 0.2,
+        max_tokens: 200
       })
     });
 
-console.log("🔥 RAW RESPONSE:", JSON.stringify(response, null, 2));
-  const data = await response.json();
+const data = await response.json();
+console.log("🔥 RAW RESPONSE:", JSON.stringify(data, null, 2));
 
-// const explanation =
-//   data?.choices?.[0]?.message?.content || 
-//   data?.output?.[0]?.content ||          
-//   data?.text || 
-//   "No explanation returned.";
-const explanation = JSON.stringify(data, null, 2);
+const explanation = data?.choices?.[0]?.message?.content || "No explanation returned.";
 
 res.setHeader("Access-Control-Allow-Origin", "*");
 res.status(200).json({ explanation });

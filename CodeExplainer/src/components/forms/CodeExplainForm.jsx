@@ -57,7 +57,7 @@ export default function CodeExplainForm() {
             )}
 
             {formState?.success && (
-                <CodeExplanation explanation={formState?.data.explaination} />
+                <CodeExplanation explanation={formState?.data.explanation} />
             )}
 
             {formState?.success === false && (
