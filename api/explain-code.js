@@ -34,14 +34,15 @@ export default async function handler(req, res) {
         max_output_tokens: 800
       })
     });
-
+console.log("🔥 RAW RESPONSE:", JSON.stringify(response, null, 2));
   const data = await response.json();
 
-const explanation =
-  data?.choices?.[0]?.message?.content || 
-  data?.output?.[0]?.content ||          
-  data?.text || 
-  "No explanation returned.";
+// const explanation =
+//   data?.choices?.[0]?.message?.content || 
+//   data?.output?.[0]?.content ||          
+//   data?.text || 
+//   "No explanation returned.";
+const explanation = JSON.stringify(data, null, 2);
 
 res.setHeader("Access-Control-Allow-Origin", "*");
 res.status(200).json({ explanation });
