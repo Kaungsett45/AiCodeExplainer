@@ -3,6 +3,8 @@ import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 export default function CodeExplanation({ explanation }) {
+    console.log("🧠 Explanation received:", explanation);
+
     return (
         <div className="explanation-container">
             <h3 style={{ 

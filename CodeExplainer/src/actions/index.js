@@ -20,9 +20,6 @@ export async function explain(prevState, formData){
             }
 
             const data = await res.json();
-            console.log("Response status:", res.status);
-            console.log("Raw response code:", code);
-            console.log("Raw response code:", language);
             return{
                 success: true,
                 data
