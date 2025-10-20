@@ -1,8 +1,10 @@
 const Navi = () => {
     return (
-        <nav className="navbar">
-            <div className="container">
-                <h1>⚡ CodeMind AI</h1>
+        <nav >
+            <div >
+                <h1>Normal</h1>
+                <h1>Real Time</h1>
+                
             </div>
         </nav>
     )
