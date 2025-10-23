@@ -244,24 +244,3 @@ body {
 .copy-btn:active {
   transform: translateY(0);
 }
-
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
-  
-  .form-container {
-    padding: 1.5rem;
-    margin: 0 1rem;
-  }
-  
-  .container {
-    padding: 0 1rem;
-  }
-  
-  .copy-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 12px;
-  }
-}

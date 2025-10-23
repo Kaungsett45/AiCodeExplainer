@@ -1,5 +1,5 @@
 import CodeExplainForm from './forms/CodeExplainForm.jsx';
-import Navi from './Navigation.jsx';
+import Navi from './mode/selector.jsx';
 
 const Entry = () => {
     return (
